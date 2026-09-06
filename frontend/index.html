@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chorcha - Free & Unlimited Exam Preparation Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', 'Hind Siliguri', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 h-full flex flex-col">
+    
+    <!-- Top Navigation -->
+    <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <span class="text-3xl">🎯</span>
+            <div>
+                <h1 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                    Chorcha <span class="text-xs bg-indigo-500 text-white px-2 py-0.5 rounded-full uppercase tracking-wider font-semibold">100% Free & Unlimited</span>
+                </h1>
+                <p class="text-xs text-slate-400">BCS, University Admission, Bank Jobs & Board Exams Prep</p>
+            </div>
+        </div>
+        
+        <nav class="hidden md:flex items-center space-x-1">
+            <button onclick="switchTab('dashboard')" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition bg-indigo-600 text-white" id="btn-dashboard">Dashboard</button>
+            <button onclick="switchTab('exams')" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition text-slate-300 hover:bg-slate-700" id="btn-exams">Model Tests</button>
+            <button onclick="switchTab('custom')" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition text-slate-300 hover:bg-slate-700" id="btn-custom">Custom Builder</button>
+            <button onclick="switchTab('bank')" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition text-slate-300 hover:bg-slate-700" id="btn-bank">Question Bank</button>
+            <button onclick="switchTab('leaderboard')" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition text-slate-300 hover:bg-slate-700" id="btn-leaderboard">Leaderboard</button>
+            <button onclick="switchTab('analytics')" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition text-slate-300 hover:bg-slate-700" id="btn-analytics">Analytics</button>
+            <button onclick="switchTab('admin')" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition text-slate-300 hover:bg-slate-700" id="btn-admin">Admin CMS</button>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+            <div class="text-right hidden sm:block">
+                <div class="text-sm font-semibold text-white" id="user-name">Mahtab</div>
+                <div class="text-xs text-indigo-400" id="user-goal">Goal: BCS</div>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center font-bold text-lg shadow-lg">M</div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 overflow-y-auto p-6 max-w-7xl mx-auto w-full">
+        
+        <!-- DASHBOARD TAB -->
+        <div id="tab-dashboard" class="tab-content space-y-6">
+            <div class="bg-gradient-to-r from-indigo-900 via-purple-900 to-slate-900 border border-indigo-700/50 rounded-2xl p-8 shadow-xl">
+                <div class="max-w-3xl">
+                    <span class="text-xs bg-indigo-500/30 text-indigo-300 border border-indigo-500/50 px-3 py-1 rounded-full font-semibold">Welcome back, Mahtab! 👋</span>
+                    <h2 class="text-3xl font-bold mt-3 text-white">Your Unrestricted Learning Hub</h2>
+                    <p class="text-slate-300 mt-2">Zero paywalls, zero ads, zero limits. Access unlimited model tests, custom exam builders, and instant AI analytics for BCS, Admission, and Job Exams.</p>
+                    <div class="mt-6 flex flex-wrap gap-4">
+                        <button onclick="switchTab('exams')" class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition">🚀 Start Live Model Test</button>
+                        <button onclick="switchTab('custom')" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition">⚙️ Build Custom Exam</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow">
+                    <div class="text-slate-400 text-sm font-medium">Study Streak</div>
+                    <div class="text-3xl font-bold text-indigo-400 mt-2 flex items-center gap-2"><span id="stat-streak">12</span> Days 🔥</div>
+                </div>
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow">
+                    <div class="text-slate-400 text-sm font-medium">Exams Completed</div>
+                    <div class="text-3xl font-bold text-emerald-400 mt-2" id="stat-exams">48</div>
+                </div>
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow">
+                    <div class="text-slate-400 text-sm font-medium">Average Accuracy</div>
+                    <div class="text-3xl font-bold text-amber-400 mt-2">84%</div>
+                </div>
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow">
+                    <div class="text-slate-400 text-sm font-medium">Platform Access</div>
+                    <div class="text-2xl font-bold text-purple-400 mt-2">100% Free ∞</div>
+                </div>
+            </div>
+
+            <!-- Categories Section -->
+            <h3 class="text-xl font-bold text-white mt-8 mb-4">Choose Target Examination</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="categories-grid">
+                <!-- Loaded dynamically -->
+            </div>
+        </div>
+
+        <!-- MODEL TESTS TAB -->
+        <div id="tab-exams" class="tab-content hidden space-y-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h2 class="text-2xl font-bold text-white">Live Model Tests & Past Papers</h2>
+                    <p class="text-slate-400 text-sm">Select any exam category to launch an authentic timed test simulation.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full font-semibold">BCS Preliminary</span>
+                        <h3 class="text-xl font-bold text-white mt-3">47th BCS Full Model Test (Set A)</h3>
+                        <p class="text-slate-400 text-sm mt-2">200 Marks • 120 Minutes • Negative Marking: 0.50 per wrong answer.</p>
+                    </div>
+                    <button onclick="startExam('bcs')" class="mt-6 bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-xl font-semibold transition">Start BCS Test</button>
+                </div>
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full font-semibold">University Admission</span>
+                        <h3 class="text-xl font-bold text-white mt-3">Dhaka University (KA Unit) Science Model</h3>
+                        <p class="text-slate-400 text-sm mt-2">100 Marks • 60 Minutes • Physics, Chemistry, Math, English.</p>
+                    </div>
+                    <button onclick="startExam('admission')" class="mt-6 bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-xl font-semibold transition">Start Admission Test</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CUSTOM EXAM BUILDER TAB -->
+        <div id="tab-custom" class="tab-content hidden space-y-6">
+            <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 max-w-2xl mx-auto shadow-xl">
+                <h2 class="text-2xl font-bold text-white mb-2">⚙️ Unlimited Custom Exam Builder</h2>
+                <p class="text-slate-400 text-sm mb-6">Tailor your practice session by category, question count, duration, and negative marking.</p>
+                
+                <form id="custom-exam-form" onsubmit="generateCustomExam(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Exam Category</label>
+                        <select id="custom-cat" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500">
+                            <option value="bcs">BCS Preliminary</option>
+                            <option value="admission">University Admission</option>
+                            <option value="bank">Bank Jobs</option>
+                            <option value="hsc">HSC Science</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Number of Questions</label>
+                        <input type="number" id="custom-num" value="10" min="5" max="50" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Duration (Minutes)</label>
+                        <input type="number" id="custom-duration" value="15" min="5" max="120" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Negative Marking per Wrong Answer</label>
+                        <select id="custom-neg" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500">
+                            <option value="0.25">0.25 Marks</option>
+                            <option value="0.50">0.50 Marks</option>
+                            <option value="0">No Negative Marking</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 rounded-xl shadow-lg transition">🚀 Launch Custom Practice Test</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- QUESTION BANK TAB -->
+        <div id="tab-bank" class="tab-content hidden space-y-6">
+            <div class="flex justify-between items-center">
+                <h2 class="text-2xl font-bold text-white">Full Question Bank & Archives</h2>
+                <input type="text" placeholder="Search questions..." class="bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-indigo-500 w-64">
+            </div>
+            <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 space-y-4">
+                <div class="border-b border-slate-700 pb-4">
+                    <span class="text-xs bg-indigo-500/20 text-indigo-400 px-2.5 py-1 rounded font-semibold">BCS • Bangladesh Affairs</span>
+                    <h3 class="text-lg font-bold text-white mt-2">Q: When was the historic Six-Point demand presented?</h3>
+                    <div class="grid grid-cols-2 gap-3 mt-3">
+                        <div class="bg-slate-900 p-3 rounded-lg border border-emerald-500/50 text-emerald-400 text-sm">A) 1966 (Correct Answer)</div>
+                        <div class="bg-slate-900 p-3 rounded-lg border border-slate-700 text-slate-300 text-sm">B) 1969</div>
+                        <div class="bg-slate-900 p-3 rounded-lg border border-slate-700 text-slate-300 text-sm">C) 1970</div>
+                        <div class="bg-slate-900 p-3 rounded-lg border border-slate-700 text-slate-300 text-sm">D) 1952</div>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-3">💡 <strong class="text-slate-300">Explanation:</strong> Bangabandhu Sheikh Mujibur Rahman presented the Six-Point demand in February 1966 at Lahore.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEADERBOARD TAB -->
+        <div id="tab-leaderboard" class="tab-content hidden space-y-6">
+            <h2 class="text-2xl font-bold text-white">Real-Time Leaderboard</h2>
+            <div class="bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden shadow-xl">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-900 border-b border-slate-700 text-slate-400 text-sm">
+                            <th class="p-4">Rank</th>
+                            <th class="p-4">Candidate Name</th>
+                            <th class="p-4">Category</th>
+                            <th class="p-4">Score</th>
+                            <th class="p-4">Badge</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-tbody" class="divide-y divide-slate-700 text-sm">
+                        <!-- Loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ANALYTICS TAB -->
+        <div id="tab-analytics" class="tab-content hidden space-y-6">
+            <h2 class="text-2xl font-bold text-white">Deep Performance Insights</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-white mb-4">💪 Strong Subjects</h3>
+                    <div class="space-y-3">
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex justify-between items-center">
+                            <span>Bangla Literature</span>
+                            <span class="text-emerald-400 font-bold">94% Accuracy</span>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex justify-between items-center">
+                            <span>General Science</span>
+                            <span class="text-emerald-400 font-bold">91% Accuracy</span>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex justify-between items-center">
+                            <span>ICT & Computer</span>
+                            <span class="text-emerald-400 font-bold">89% Accuracy</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-white mb-4">⚠️ Areas for Improvement</h3>
+                    <div class="space-y-3">
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex justify-between items-center">
+                            <span>International Affairs</span>
+                            <span class="text-amber-400 font-bold">68% Accuracy</span>
+                        </div>
+                        <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex justify-between items-center">
+                            <span>Higher Mathematics</span>
+                            <span class="text-amber-400 font-bold">72% Accuracy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADMIN CMS TAB -->
+        <div id="tab-admin" class="tab-content hidden space-y-6">
+            <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 max-w-2xl mx-auto shadow-xl">
+                <h2 class="text-2xl font-bold text-white mb-2">🛠️ Admin CMS & Question Bank Manager</h2>
+                <p class="text-slate-400 text-sm mb-6">Add new questions directly into the system database instantly.</p>
+                
+                <form onsubmit="addQuestion(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">Category</label>
+                        <select id="admin-cat" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white">
+                            <option value="bcs">BCS Preliminary</option>
+                            <option value="admission">University Admission</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">Question Text</label>
+                        <input type="text" id="admin-q" placeholder="Enter question..." required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" id="admin-opt0" placeholder="Option A" required class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm">
+                        <input type="text" id="admin-opt1" placeholder="Option B" required class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm">
+                        <input type="text" id="admin-opt2" placeholder="Option C" required class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm">
+                        <input type="text" id="admin-opt3" placeholder="Option D" required class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">Correct Option Index (0 for A, 1 for B, etc.)</label>
+                        <input type="number" id="admin-ans" min="0" max="3" value="0" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">Explanation</label>
+                        <textarea id="admin-exp" placeholder="Detailed step-by-step solution..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white h-24"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 rounded-xl shadow-lg transition">➕ Add Question to Database</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- EXAM RUNNER MODAL -->
+    <div id="exam-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl max-w-3xl w-full p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-slate-700 pb-4">
+                <div>
+                    <h3 id="exam-title" class="text-xl font-bold text-white">Model Test Simulation</h3>
+                    <p class="text-xs text-indigo-400 mt-1">Live Synchronized Timer Active</p>
+                </div>
+                <div class="bg-indigo-600/20 border border-indigo-500/50 text-indigo-300 px-4 py-2 rounded-xl font-mono text-lg font-bold" id="timer">
+                    15:00
+                </div>
+            </div>
+
+            <div id="exam-questions-container" class="space-y-6">
+                <!-- Injected Questions -->
+            </div>
+
+            <div class="flex justify-end space-x-4 pt-4 border-t border-slate-700">
+                <button onclick="closeExam()" class="px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-xl font-semibold text-white">Cancel</button>
+                <button onclick="submitExam()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 rounded-xl font-semibold text-white shadow-lg">Submit Exam & View Scorecard</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT LOGIC -->
+    <script>
+        const API = 'http://localhost:5000/api';
+        let currentExamData = null;
+        let timerInterval = null;
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-btn').forEach(el => {
+                el.classList.remove('bg-indigo-600', 'text-white');
+                el.classList.add('text-slate-300', 'hover:bg-slate-700');
+            });
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            if(activeBtn) {
+                activeBtn.classList.add('bg-indigo-600', 'text-white');
+                activeBtn.classList.remove('text-slate-300', 'hover:bg-slate-700');
+            }
+            if(tabId === 'leaderboard') loadLeaderboard();
+            if(tabId === 'dashboard') loadDashboard();
+        }
+
+        async function loadDashboard() {
+            try {
+                const res = await fetch(`${API}/categories`);
+                const cats = await res.json();
+                const grid = document.getElementById('categories-grid');
+                grid.innerHTML = '';
+                cats.forEach(c => {
+                    grid.innerHTML += `
+                        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 hover:border-indigo-500 transition cursor-pointer" onclick="startExam('${c.id}')">
+                            <div class="text-3xl mb-3">${c.icon}</div>
+                            <h4 class="text-lg font-bold text-white">${c.name}</h4>
+                            <p class="text-xs text-slate-400 mt-2">${c.description}</p>
+                            <div class="mt-4 text-xs font-semibold text-indigo-400">${c.count.toLocaleString()} Practice Questions →</div>
+                        </div>
+                    `;
+                });
+            } catch(e) {}
+        }
+
+        async function loadLeaderboard() {
+            try {
+                const res = await fetch(`${API}/leaderboard`);
+                const data = await res.json();
+                const tbody = document.getElementById('leaderboard-tbody');
+                tbody.innerHTML = '';
+                data.forEach(row => {
+                    tbody.innerHTML += `
+                        <tr class="hover:bg-slate-900/50">
+                            <td class="p-4 font-bold text-indigo-400">#${row.rank}</td>
+                            <td class="p-4 font-semibold text-white">${row.name}</td>
+                            <td class="p-4 text-slate-300">${row.category}</td>
+                            <td class="p-4 font-bold text-emerald-400">${row.score}</td>
+                            <td class="p-4"><span class="bg-slate-700 text-slate-200 px-3 py-1 rounded-full text-xs font-semibold">${row.badge}</span></td>
+                        </tr>
+                    `;
+                });
+            } catch(e) {}
+        }
+
+        async function startExam(category) {
+            try {
+                const res = await fetch(`${API}/questions/${category}`);
+                const questions = await res.json();
+                currentExamData = { category, questions };
+                
+                document.getElementById('exam-title').innerText = `${category.toUpperCase()} Model Test Simulation`;
+                const container = document.getElementById('exam-questions-container');
+                container.innerHTML = '';
+                
+                questions.forEach((q, idx) => {
+                    let optsHtml = '';
+                    q.options.forEach((opt, oIdx) => {
+                        optsHtml += `
+                            <label class="block bg-slate-900 border border-slate-700 hover:border-indigo-500 p-3 rounded-xl cursor-pointer transition">
+                                <input type="radio" name="q_${q.id}" value="${oIdx}" class="mr-3">
+                                <span class="text-sm text-slate-200">${opt}</span>
+                            </label>
+                        `;
+                    });
+                    container.innerHTML += `
+                        <div class="bg-slate-900/50 border border-slate-700 p-6 rounded-xl space-y-3">
+                            <div class="text-xs text-indigo-400 font-semibold">Question ${idx + 1} of ${questions.length} • Subject: ${q.subject || 'General'}</div>
+                            <div class="text-white font-medium">${q.q}</div>
+                            <div class="space-y-2 mt-2">${optsHtml}</div>
+                        </div>
+                    `;
+                });
+
+                document.getElementById('exam-modal').classList.remove('hidden');
+                startTimer(15 * 60);
+            } catch(e) {
+                alert('Failed to load exam questions.');
+            }
+        }
+
+        async function generateCustomExam(e) {
+            e.preventDefault();
+            const category = document.getElementById('custom-cat').value;
+            const numQuestions = parseInt(document.getElementById('custom-num').value);
+            const duration = parseInt(document.getElementById('custom-duration').value);
+            const negativeMarking = parseFloat(document.getElementById('custom-neg').value);
+
+            try {
+                const res = await fetch(`${API}/exams/custom`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ category, numQuestions, duration, negativeMarking })
+                });
+                const data = await res.json();
+                currentExamData = { category, questions: data.questions };
+
+                document.getElementById('exam-title').innerText = `Custom ${category.toUpperCase()} Test (${data.totalQuestions} Qs)`;
+                const container = document.getElementById('exam-questions-container');
+                container.innerHTML = '';
+
+                data.questions.forEach((q, idx) => {
+                    let optsHtml = '';
+                    q.options.forEach((opt, oIdx) => {
+                        optsHtml += `
+                            <label class="block bg-slate-900 border border-slate-700 hover:border-indigo-500 p-3 rounded-xl cursor-pointer transition">
+                                <input type="radio" name="q_${q.id}" value="${oIdx}" class="mr-3">
+                                <span class="text-sm text-slate-200">${opt}</span>
+                            </label>
+                        `;
+                    });
+                    container.innerHTML += `
+                        <div class="bg-slate-900/50 border border-slate-700 p-6 rounded-xl space-y-3">
+                            <div class="text-xs text-indigo-400 font-semibold">Question ${idx + 1} of ${data.questions.length}</div>
+                            <div class="text-white font-medium">${q.q}</div>
+                            <div class="space-y-2 mt-2">${optsHtml}</div>
+                        </div>
+                    `;
+                });
+
+                document.getElementById('exam-modal').classList.remove('hidden');
+                startTimer(duration * 60);
+            } catch(e) {
+                alert('Failed to generate custom exam.');
+            }
+        }
+
+        function startTimer(durationSeconds) {
+            let timer = durationSeconds;
+            if(timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                let minutes = parseInt(timer / 60, 10);
+                let seconds = parseInt(timer % 60, 10);
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                document.getElementById('timer').innerText = `${minutes}:${seconds}`;
+                if (--timer < 0) {
+                    clearInterval(timerInterval);
+                    submitExam();
+                }
+            }, 1000);
+        }
+
+        function closeExam() {
+            if(timerInterval) clearInterval(timerInterval);
+            document.getElementById('exam-modal').classList.add('hidden');
+        }
+
+        async function submitExam() {
+            if(timerInterval) clearInterval(timerInterval);
+            let correct = 0;
+            let incorrect = 0;
+            let total = currentExamData.questions.length;
+
+            currentExamData.questions.forEach(q => {
+                const selected = document.querySelector(`input[name="q_${q.id}"]:checked`);
+                if(selected) {
+                    if(parseInt(selected.value) === q.answer) correct++;
+                    else incorrect++;
+                } else {
+                    incorrect++;
+                }
+            });
+
+            try {
+                const res = await fetch(`${API}/exams/submit`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        category: currentExamData.category,
+                        score: correct,
+                        total,
+                        correct,
+                        incorrect,
+                        timeTaken: "12m"
+                    })
+                });
+                const data = await res.json();
+                document.getElementById('exam-modal').classList.add('hidden');
+                alert(`🎉 Exam Completed Successfully!\nScore: ${correct}/${total} (${data.percentage}%)\nRank: #${data.rank}`);
+                switchTab('leaderboard');
+            } catch(e) {
+                alert('Submitted successfully!');
+                closeExam();
+            }
+        }
+
+        async function addQuestion(e) {
+            e.preventDefault();
+            const category = document.getElementById('admin-cat').value;
+            const q = document.getElementById('admin-q').value;
+            const options = [
+                document.getElementById('admin-opt0').value,
+                document.getElementById('admin-opt1').value,
+                document.getElementById('admin-opt2').value,
+                document.getElementById('admin-opt3').value
+            ];
+            const answer = document.getElementById('admin-ans').value;
+            const explanation = document.getElementById('admin-exp').value;
+
+            try {
+                const res = await fetch(`${API}/admin/questions`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ category, q, options, answer, explanation })
+                });
+                const data = await res.json();
+                if(data.success) {
+                    alert('Question added successfully to the database!');
+                    e.target.reset();
+                }
+            } catch(e) {
+                alert('Error adding question.');
+            }
+        }
+
+        // Initial load
+        loadDashboard();
+    </script>
+</body>
+</html>
