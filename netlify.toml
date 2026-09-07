@@ -1,4 +1,4 @@
 [build]
-  base = "backend"
+  base = "frontend"
   command = "npm run build"
   publish = "dist"
